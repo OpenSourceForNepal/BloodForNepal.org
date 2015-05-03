@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 gem 'daemons'
+gem 'enumerize'
 gem 'geocoder'
 
 group :development, :test do

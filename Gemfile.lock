@@ -68,6 +68,8 @@ GEM
     dotenv (2.0.0)
     dotenv-rails (2.0.0)
       dotenv (= 2.0.0)
+    enumerize (0.11.0)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.5.2)
     faker (1.4.3)
@@ -176,6 +178,7 @@ DEPENDENCIES
   delayed_job_active_record
   delayed_job_web
   dotenv-rails
+  enumerize
   faker
   geocoder
   jbuilder (~> 2.0)

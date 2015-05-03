@@ -9,8 +9,10 @@ class CreateDonors < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :postal_code
+      t.string :country, default: 'Nepal'
       t.float  :lat
       t.float  :long
+      t.integer :commute_radius, default: 5
 
       t.timestamps null: false
     end
