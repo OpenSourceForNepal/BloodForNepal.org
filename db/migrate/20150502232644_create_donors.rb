@@ -1,15 +1,16 @@
-class CreateDonatees < ActiveRecord::Migration
+class CreateDonors < ActiveRecord::Migration
   def change
-    create_table :donatees do |t|
+    create_table :donors do |t|
       t.string :first_name
       t.string :last_name
       t.string :cell_phone
       t.string :email
-      t.string :address1
-      t.string :address2
+      t.string :street
       t.string :city
       t.string :state
       t.string :postal_code
+      t.float  :lat
+      t.float  :long
 
       t.timestamps null: false
     end
