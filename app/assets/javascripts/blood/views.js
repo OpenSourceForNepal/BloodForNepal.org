@@ -17,6 +17,11 @@ BloodForNepal.Views = function() {
   }
 
   this.updateAddressInput = function(address) {
-    document.getElementById('donor_address').value = address
+    var el = document.getElementById('donor_address')
+    el.value = address
+    el.className += ' animated '
+    el.className += ' pulse '
+
+    setTimeout(function(){ el.classList.remove("pulse"); }, 1000);
   }
 };

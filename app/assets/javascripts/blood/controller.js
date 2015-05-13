@@ -50,7 +50,8 @@ BloodForNepal.Controller = function(views) {
         map: map,
         icon: '/person_pin.png',
         position: place.geometry.location,
-        draggable: true
+        draggable: true,
+        animation:google.maps.Animation.DROP
       });
 
       markers.push(marker);
