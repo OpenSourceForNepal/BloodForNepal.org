@@ -4,11 +4,16 @@ BloodForNepal.Controller = function(views) {
 
   this.initialize = function() {
     var map = this.map()
-    map.data.loadGeoJson('https://gist.githubusercontent.com/dahal/729a9963886b9fef6b2a/raw/029fea0c2ea5591b80b924819a67f4a5baeeab41/nepal.geojson')
+    map.data.loadGeoJson("https://gist.githubusercontent.com/dahal/729a9963886b9fef6b2a/raw/029fea0c2ea5591b80b924819a67f4a5baeeab41/nepal.geojson")
     map.setOptions({styles: this.mapStyle()})
     this.views.activateSlider()
     this.bindAddressInput()
+    this.maskCellPhoneNumber()
   };
+
+  this.maskCellPhoneNumber = function() {
+    $("#donor_cell_phone").mask("(+000) 0000000000");
+  }
 
   this.mapOptions = function(zoom, center) {
     var nepal = new google.maps.LatLng(27.8, 84.1)
@@ -31,10 +36,10 @@ BloodForNepal.Controller = function(views) {
 
   this.bindAddressInput = function() {
     var markers = [];
-    var input = (document.getElementById('donor_address'))
+    var input = (document.getElementById("donor_address"))
     var searchBox = new google.maps.places.SearchBox(input, { componentRestrictions: {country: "np"}});
 
-    google.maps.event.addListener(searchBox, 'places_changed', function() {
+    google.maps.event.addListener(searchBox, "places_changed", function() {
       var places = searchBox.getPlaces();
       self.PinPointOnMap(markers, places, searchBox)
     })
@@ -48,7 +53,7 @@ BloodForNepal.Controller = function(views) {
     for (var i = 0, place; place = places[i]; i++) {
       var marker = new google.maps.Marker({
         map: map,
-        icon: '/person_pin.png',
+        icon: "/person_pin.png",
         position: place.geometry.location,
         draggable: true,
         animation:google.maps.Animation.DROP
@@ -66,7 +71,7 @@ BloodForNepal.Controller = function(views) {
   };
 
   this.activatePinDrag = function(marker, searchBox, map) {
-    google.maps.event.addListener(marker, 'dragend', function(e) {
+    google.maps.event.addListener(marker, "dragend", function(e) {
       self.views.setLatLongParams(e.latLng.lat(), e.latLng.lng())
       self.geocodePosition(e);
       self.activateMapInfo(map, marker)
@@ -75,12 +80,12 @@ BloodForNepal.Controller = function(views) {
 
   this.activateMapInfo = function(marker, map) {
     var infowindow = new google.maps.InfoWindow({
-      content: '<center><strong>Is this where you live?</strong> </br> You may move it around to pinpoint your location.</center>'
+      content: "<center><strong>Is this where you live?</strong> </br> You may move it around to pinpoint your location.</center>"
     });
 
     infowindow.open(map,marker);
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, "click", function() {
       infowindow.open(map,marker);
     });
   }

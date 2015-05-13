@@ -38,11 +38,13 @@ class Donor < ActiveRecord::Base
   end
 
   def nepal_cellphone
-    cellphone = self.cell_phone.gsub(/\s|\.|\-|\(|\)/, '')
+    cellphone = self.cell_phone.squish.gsub(/\s|\.|\-|\(|\)/, '')
     cellphone = if cellphone.start_with?('+977') && cellphone.length == 14
       cellphone
     elsif cellphone.start_with?('977') && cellphone.length == 13
       cellphone.insert(0, '+')
+    elsif cellphone == '+977'
+      ''
     elsif cellphone.blank?
       cellphone
     else
