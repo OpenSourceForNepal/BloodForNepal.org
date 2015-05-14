@@ -1,6 +1,7 @@
 <% @donors.each do |donor| %>
   <div class="donor">
     <h1><%= donor.full_name %></h1>
+    <p><strong>Email:</strong> <%= donor.email %></p>
     <p><strong>Address:</strong> <%= donor.address %></p>
     <p><strong> Cell Phone:</strong> <i class="fa fa-mobile fa-2x"></i></abbr> <%= donor.cell_phone %></p>
     <p><strong> Blood Type:</strong> <i class="fa fa-tint fa-2x"></i></abbr> <%= donor.blood_type.titleize %></p>
