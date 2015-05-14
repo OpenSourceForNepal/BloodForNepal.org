@@ -3,8 +3,17 @@
   <div class="blood-header">
     <div class="container">
       <center>
-        <h1 class="text-white">Donate Blood, Save Lives!</h1>
-        <p class="text-white">Please complete the form below, we will notify when someone / hospital needs your blood.</p>
+        <h1 class="text-white"><%= @donor.full_name %></h1>
+        <address class="text-white">
+          <%= @donor.address %><br>
+          <abbr title="Cell Phone"><i class="fa fa-mobile fa-2x"></i></abbr> <%= @donor.cell_phone %>&nbsp;&nbsp;
+          <abbr title="Blood Type"><i class="fa fa-tint fa-2x"></i></abbr> <%= @donor.blood_type.titleize %>
+        </address>
+        <span class="text-white">
+          <span class="quote">&ldquo;</span>
+            <strong>Each pint</strong> of your blood can save as many as <strong>three lives</strong>
+          <span class="quote">&rdquo;</span>
+        </span>
       </center>
     </div>
   </div>

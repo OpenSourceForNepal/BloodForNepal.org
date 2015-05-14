@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150503081226) do
   create_table "blood_types_hospitals", force: :cascade do |t|
     t.integer  "hospital_id"
     t.integer  "blood_type_id"
+    t.integer  "need_level"
     t.datetime "expires_on"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -64,18 +65,17 @@ ActiveRecord::Schema.define(version: 20150503081226) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "name"
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.string   "postal_code"
-    t.string   "country",              default: "Nepal"
+    t.string   "address"
     t.string   "lat"
     t.string   "long"
+    t.string   "phone"
+    t.string   "category"
     t.string   "contact_person_name"
+    t.string   "contact_person_type"
     t.string   "contact_person_email"
     t.string   "contact_person_phone"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
 end

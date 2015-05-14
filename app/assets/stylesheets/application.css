@@ -1,6 +1,7 @@
 /*
  *= require_self
  *= require vendor/slider.css
+ *= require vendor/awesomplete.css
  */
 
  html, body{
@@ -69,14 +70,12 @@ html, body, #map-canvas {
   width: 60%;
 }
 
-.alert-success {
-  background-color: rgba(0,180,140,0.4) !important;
-  border-color: none;
-  color: #ffffff;
-}
-
 .blood-header {
   background-color: #8A0707;
   padding-top: 60px;
   padding-bottom: 20px;
+}
+.quote {
+  font-size: 40px;
+  /*line-height: 0px;*/
 }

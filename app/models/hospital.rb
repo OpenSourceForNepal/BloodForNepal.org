@@ -4,14 +4,13 @@
 #
 #  id                   :integer          not null, primary key
 #  name                 :string
-#  street               :string
-#  city                 :string
-#  state                :string
-#  postal_code          :string
-#  country              :string           default("Nepal")
+#  address              :string
 #  lat                  :string
 #  long                 :string
+#  phone                :string
+#  category             :string
 #  contact_person_name  :string
+#  contact_person_type  :string
 #  contact_person_email :string
 #  contact_person_phone :string
 #  created_at           :datetime         not null
@@ -19,28 +18,28 @@
 #
 
 class Hospital < ActiveRecord::Base
+  extend Enumerize
   geocoded_by :address, :latitude  => :lat, :longitude => :long
   before_validation :normalize_data
   after_validation :geocode
+  after_validation :geo_code
   has_and_belongs_to_many :blood_types
 
+  enumerize :category, in: [:private_hospital, :public_hospital, :blood_bank, :other]
+  enumerize :contact_person_type, in: [:doctor, :nurse, :hospital_staff, :volunteer, :intern, :other]
+
   validates :name, presence: { :message => 'Name of the Hospital cannot be blank!' }
-  validates :city, presence: { :message => 'We need city to locate this hospital.' }
-  validates :state, presence: { :message => 'We need Aanchal so we can find the correct location.' }
-  validates :foo, length: {is: 10, message: 'Phone number you entered in invalid!'}, allow_blank: false
+  validates :address, presence: { :message => 'Please provide the valid address.' }
+  validates :category, presence: true
 
-
-  def address
-    [street, city, state, country].compact.join(', ')
+  def geo_code
+    geocode if (self.lat.nil? || self.long.nil?)
   end
 
   def normalize_data
-    self.name.try(:capitalize!)
-    self.street.squish.try(:capitalize!) if self.street.present?
-    self.city.squish.try(:capitalize!)
-    self.state.squish.try(:capitalize!)
-    self.contact_person_name.squish.try(:capitalize!) if self.contact_person_name.present?
-    self.contact_person_email.squish.try(:downcase!) if self.contact_person_email.present?
-    self.cell_phone.gsub!(/\s|\.|\-|\(|\)/, '').insert(0, '+977') if self.cell_phone.present?
+    self.name = self.name.try(:titleize)
+    self.address = self.address.squish.try(:titleize) if self.address.present?
+    self.contact_person_name = self.contact_person_name.squish.try(:titleize) if self.contact_person_name.present?
+    self.contact_person_email = self.contact_person_email.squish.try(:downcase) if self.contact_person_email.present?
   end
 end

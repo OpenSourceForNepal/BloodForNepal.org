@@ -29,8 +29,8 @@ class Donor < ActiveRecord::Base
   enumerize :blood_type, in: [:o_positive, :o_negative, :a_positive, :a_negative, :b_positive, :b_negative, :ab_positive, :ab_negative]
 
   def normalize_data
-    self.full_name.try(:capitalize!)
-    self.address.squish.try(:capitalize!) if self.address.present?
+    self.full_name = self.full_name.try(:titleize)
+    self.address = self.address.squish.try(:titleize) if self.address.present?
   end
 
   def geo_code

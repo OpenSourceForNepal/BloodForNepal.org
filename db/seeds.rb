@@ -4,3 +4,11 @@ blood_types.each do |blood_type|
     blood_type: blood_type
   )
 end
+
+# 10.times do |n|
+#   Hospital.create(
+#     name: 'Bir Hospital' + n.to_s,
+#     address: 'Kathmandu, Nepal',
+#     category: [:private_hospital, :public_hospital, :blood_bank, :other].sample
+#   )
+# end

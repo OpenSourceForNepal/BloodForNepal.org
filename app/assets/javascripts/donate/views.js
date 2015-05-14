@@ -1,10 +1,12 @@
-BloodForNepal.Views = function() {
+BloodForNepal.Donate.Views = function() {
   this.activateSlider = function() {
-    var slider = new Slider("#commute_radius", {
-      ticks: [0, 5, 10, 15, 20, 25],
-      ticks_labels: ['0', '5', '10', '15', '20','25'],
-      ticks_snap_bounds: 30
-    });
+    if (document.getElementById("commute_radius") != undefined ) {
+      var slider = new Slider("#commute_radius", {
+        ticks: [0, 5, 10, 15, 20, 25],
+        ticks_labels: ['0', '5', '10', '15', '20','25'],
+        ticks_snap_bounds: 30
+      });
+    }
   }
 
   this.setLatLongParams = function(lat, long) {

@@ -1,4 +1,4 @@
-BloodForNepal.Controller = function(views) {
+BloodForNepal.Hospital.Controller = function(views) {
   var self = this;
   this.views = views;
 
@@ -6,14 +6,8 @@ BloodForNepal.Controller = function(views) {
     var map = this.map()
     map.data.loadGeoJson("https://gist.githubusercontent.com/dahal/729a9963886b9fef6b2a/raw/029fea0c2ea5591b80b924819a67f4a5baeeab41/nepal.geojson")
     map.setOptions({styles: this.mapStyle()})
-    this.views.activateSlider()
     this.bindAddressInput()
-    this.maskCellPhoneNumber()
   };
-
-  this.maskCellPhoneNumber = function() {
-    $("#donor_cell_phone").mask("(+000) 0000000000");
-  }
 
   this.mapOptions = function(zoom, center) {
     var nepal = new google.maps.LatLng(27.8, 84.1)
@@ -36,7 +30,7 @@ BloodForNepal.Controller = function(views) {
 
   this.bindAddressInput = function() {
     var markers = [];
-    var input = (document.getElementById("donor_address"))
+    var input = (document.getElementById("donor_address") || document.getElementById("hospital_address"))
     var searchBox = new google.maps.places.SearchBox(input, { componentRestrictions: {country: "np"}});
 
     google.maps.event.addListener(searchBox, "places_changed", function() {
@@ -53,7 +47,7 @@ BloodForNepal.Controller = function(views) {
     for (var i = 0, place; place = places[i]; i++) {
       var marker = new google.maps.Marker({
         map: map,
-        icon: "/person_pin.png",
+        icon: "/blood_pin.png",
         position: place.geometry.location,
         draggable: true,
         animation:google.maps.Animation.DROP
@@ -79,8 +73,9 @@ BloodForNepal.Controller = function(views) {
   };
 
   this.activateMapInfo = function(marker, map) {
+    var name = document.getElementById('hospital_name').value
     var infowindow = new google.maps.InfoWindow({
-      content: "<center><strong>Is this where you live?</strong> </br> You may move it around to pinpoint your location.</center>"
+      content: "<center><strong>"+name+"</strong> </br> You may move it around to pinpoint exact location.</center>"
     });
 
     infowindow.open(map,marker);

@@ -2,14 +2,13 @@ class CreateHospitals < ActiveRecord::Migration
   def change
     create_table :hospitals do |t|
       t.string :name
-      t.string :street
-      t.string :city
-      t.string :state
-      t.string :postal_code
-      t.string :country, default: 'Nepal'
+      t.string :address
       t.string :lat
       t.string :long
+      t.string :phone
+      t.string :category
       t.string :contact_person_name
+      t.string :contact_person_type
       t.string :contact_person_email
       t.string :contact_person_phone
 

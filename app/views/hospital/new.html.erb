@@ -1,0 +1,74 @@
+<!-- Header -->
+<div class="row">
+  <div class="blood-header">
+    <div class="container">
+      <center>
+        <h1 class="text-white">Hospital and/or Blood Bank</h1>
+        <span class="text-white">
+          Please complete the form below, after you do that we expect the status of blood need in this hospital / blood bank to be updated periodically. We will notify and incourage the blood near by blood donors come and donate blood at your facility.
+        </span>
+      </center>
+    </div>
+  </div>
+</div>
+
+<%= render 'partials/flash' %>
+
+<!-- Form -->
+<div class="col-sm-5" style="min-height: 120%;">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= simple_form_for(@hospital, url: hospital_index_path, html: { class: 'form-horizontal' }) do |f| %>
+        <center><legend>Hospital / Blood Bank</legend></center>
+        <div class="col-md-10 col-md-offset-1">
+          <%= f.input :name, label: 'Name',placeholder: 'Hospital / Blood Bank Name (search)', hint: 'Required' %>
+          <%= f.input :address, label: 'Address', placeholder: 'Hospital / Blood Bank Address', hint: 'Required' %>
+          <input type="hidden" id="latitude" name="hospital[lat]" value="">
+          <input type="hidden" id="longitude" name="hospital[long]" value="">
+
+          <div class="form-group">
+            <div class="col-lg-6">
+              <%= f.input :phone, label: 'Phone Number', hint: 'Important', placeholder: '+977 0000000000', input_html: {value: '(+977)'} %>
+            </div>
+            <div class="col-lg-6">
+              <%= f.input :category %>
+            </div>
+          </div>
+
+          <center><legend>Contact Person</legend></center>
+          <div class="form-group">
+            <div class="col-lg-6">
+              <%= f.input :contact_person_name, label: 'Name', hint: 'Important', placeholder: 'Contact Person Name'%>
+            </div>
+            <div class="col-lg-6">
+              <%= f.input :contact_person_phone, label: 'Phone', hint: 'Important', placeholder: 'Contact Person Phone'%>
+            </div>
+
+            <div class="col-lg-6">
+              <%= f.input :contact_person_type, label: 'Occupation', hint: 'Important' %>
+            </div>
+            <div class="col-lg-6">
+              <%= f.input :contact_person_email, label: 'Email', hint: 'Important', placeholder: 'Contact Person Email'%>
+            </div>
+
+          </div>
+
+          <div class="col-lg-12">
+            <%= f.submit 'Submit', class: 'btn btn-default btn-lg btn-block' %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<!-- Map -->
+<div class="col-md-7" id="map-canvas" style="height: 110%;"></div>
+
+<script type="text/javascript">
+  var input = document.getElementById("hospital_name");
+  new Awesomplete(input, {
+    list: <%= raw @hospitals %>
+  });
+</script>

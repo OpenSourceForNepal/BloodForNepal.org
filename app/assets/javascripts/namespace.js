@@ -1,1 +1,4 @@
-var BloodForNepal = { };
+var BloodForNepal = {
+  Donate: { },
+  Hospital: { }
+};
