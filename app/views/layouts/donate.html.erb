@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel='icon' href='/blood.ico' sizes="16x16">
-    <title><%= content_for?(:title) ? yield(:title) : "Blood Donation Service for Nepal" %></title>
+    <link rel="apple-touch-icon-precomposed" href="https://s3-ap-southeast-1.amazonaws.com/bloodfornepal/apple-touch-icon.png" />
+    <%= display_meta_tags title: 'Donate Blood, Save Nepal Earthquake Victims.',
+      description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate Blood, Save Lives!',
+      keywords: 'Donate, Blood, Nepal, Earthquake, Victims, Save Lives',
+      viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0',
+      canonical: 'http://bloodfornepal.org',
+      og: { title: 'Donate Blood, Save Nepal Earthquake Victims.', image: 'https://s3-ap-southeast-1.amazonaws.com/bloodfornepal/supportnepal_optimized.jpg', description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate, Blood Save Lives!' } %>
+
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cosmo/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">

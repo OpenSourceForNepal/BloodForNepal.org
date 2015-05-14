@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blood Donation Service for Nepal</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'/>
+  <%= display_meta_tags title: 'Donate Blood, Save Nepal Earthquake Victims.',
+    description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate Blood, Save Lives!',
+    keywords: 'Donate, Blood, Nepal, Earthquake, Victims, Save Lives',
+    viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0',
+    canonical: 'http://bloodfornepal.org',
+    og: { title: 'Donate Blood, Save Nepal Earthquake Victims.', image: './victim.png', description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate, Blood Save Lives!' } %>
+
   <link rel='icon' href='blood.ico' sizes="16x16">
 
   <%= stylesheet_link_tag 'home' %>

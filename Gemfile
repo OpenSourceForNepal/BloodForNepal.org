@@ -18,6 +18,7 @@ gem 'enumerize'
 gem 'geocoder'
 gem 'jquery-turbolinks'
 gem 'simple_form'
+gem 'meta-tags'
 
 group :production do
   gem 'rails_12factor'
