@@ -9,7 +9,7 @@
 #  address        :string
 #  lat            :float
 #  long           :float
-#  commute_radius :integer          default(5)
+#  commute_radius :float            default(5.0)
 #  blood_type     :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -18,7 +18,7 @@
 class Donor < ActiveRecord::Base
   extend Enumerize
   geocoded_by :address, latitude: :lat, longitude: :long
-  before_validation :normalize_data, :nepal_cellphone
+  before_validation :normalize_data, :nepal_cellphone, :convert_km_to_mile
   after_validation :geo_code, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   validates :full_name, presence: { :message => 'Your name cannot be blank!' }
@@ -52,5 +52,9 @@ class Donor < ActiveRecord::Base
     end
 
     self.cell_phone = cellphone
+  end
+
+  def convert_km_to_mile
+    self.commute_radius = self.commute_radius.to_f * 0.621371
   end
 end

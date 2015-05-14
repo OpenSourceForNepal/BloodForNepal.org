@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503081226) do
+ActiveRecord::Schema.define(version: 20150514072713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 20150503081226) do
     t.string   "address"
     t.float    "lat"
     t.float    "long"
-    t.integer  "commute_radius", default: 5
+    t.float    "commute_radius", default: 5.0
     t.string   "blood_type"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "hospitals", force: :cascade do |t|
