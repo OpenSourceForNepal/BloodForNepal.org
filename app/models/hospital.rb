@@ -21,11 +21,10 @@ class Hospital < ActiveRecord::Base
   extend Enumerize
   geocoded_by :address, :latitude  => :lat, :longitude => :long
   before_validation :normalize_data
-  after_validation :geocode
   after_validation :geo_code
   has_and_belongs_to_many :blood_types
 
-  enumerize :category, in: [:private_hospital, :public_hospital, :blood_bank, :other]
+  enumerize :category, in: [:red_cross_society, :emergency_blood_transfusion, :hospital_based, :other]
   enumerize :contact_person_type, in: [:doctor, :nurse, :hospital_staff, :volunteer, :intern, :other]
 
   validates :name, presence: { :message => 'Name of the Hospital cannot be blank!' }
