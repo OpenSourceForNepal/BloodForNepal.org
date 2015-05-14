@@ -21,7 +21,7 @@ class Hospital < ActiveRecord::Base
   extend Enumerize
   geocoded_by :address, :latitude  => :lat, :longitude => :long
   before_validation :normalize_data
-  after_validation :geo_code
+  after_validation :geo_code, if: ->(obj){ obj.address.present? and obj.address_changed? }
   has_and_belongs_to_many :blood_types
 
   enumerize :category, in: [:red_cross_society, :emergency_blood_transfusion, :hospital_based, :other]
