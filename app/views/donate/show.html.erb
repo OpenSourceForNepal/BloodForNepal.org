@@ -11,7 +11,7 @@
         </address>
         <span class="text-white">
           <span class="quote">&ldquo;</span>
-            <strong>Each pint</strong> of your blood can save as many as <strong>three lives</strong>
+          <strong>Each pint</strong> of your blood can save as many as <strong>three lives</strong>
           <span class="quote">&rdquo;</span>
         </span>
       </center>
@@ -20,3 +20,46 @@
 </div>
 
 <%= render 'partials/flash' %>
+
+<div class="container">
+  <div class="page-header">
+    <center><h1 id="timeline">Hospitals and  Blood Banks</h1></center>
+  </div>
+  <ul class="timeline">
+    <% @hospitals.each_with_index do |hospital, index | %>
+      <% if (index + 1).odd? %>
+        <li>
+          <div class="timeline-badge danger"><i class="fa fa-tint"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title"><%= hospital.name %></h4>
+              <p><small class="text-muted"><i class="fa fa-map-marker"></i> <%= hospital.address %></small></p>
+              <p><small class="text-muted"><i class="fa fa-phone"></i> <%= hospital.phone || 'N/A' %></small></p>
+            </div>
+            <div class="timeline-body">
+              <p>Category: <%= hospital.category %></p>
+              <p>Contact Person: <%= hospital.contact_person_name %></p>
+              <p>Contact Phone: <%= hospital.contact_person_phone %></p>
+            </div>
+          </div>
+        </li>
+      <% else %>
+        <li class="timeline-inverted">
+          <div class="timeline-badge danger"><i class="fa fa-tint"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title"><%= hospital.name %></h4>
+              <p><small class="text-muted"><i class="fa fa-map-marker"></i> <%= hospital.address %></small></p>
+              <p><small class="text-muted"><i class="fa fa-phone"></i></i> <%= hospital.phone || 'N/A' %></small></p>
+            </div>
+            <div class="timeline-body">
+              <p>Category: <%= hospital.category %></p>
+              <p>Contact Person: <%= hospital.contact_person_name %></p>
+              <p>Contact Phone: <%= hospital.contact_person_phone %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

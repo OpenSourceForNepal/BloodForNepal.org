@@ -19,7 +19,7 @@ class DonateController < ApplicationController
 
   def show
     @donor = Donor.find(params[:id])
-    @hospitals = Hospital.near([@donor.lat , @donor.long], @donor.commute_radius / 0.621371, units: :km)
+    @hospitals = Hospital.near([@donor.lat , @donor.long], @donor.commute_radius, units: :km)
   end
 
   private
