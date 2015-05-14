@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= display_meta_tags title: 'Donate Blood, Save Nepal Earthquake Victims.',
-    description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate Blood, Save Lives!',
-    keywords: 'Donate, Blood, Nepal, Earthquake, Victims, Save Lives',
-    viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0',
-    canonical: 'http://bloodfornepal.org',
-    og: { title: 'Donate Blood, Save Nepal Earthquake Victims.', image: './victim.png', description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate, Blood Save Lives!' } %>
-
-  <link rel='icon' href='blood.ico' sizes="16x16">
+    <meta charset="utf-8" />
+    <link rel='icon' href='/blood.ico' sizes="16x16">
+    <link rel="apple-touch-icon-precomposed" href="https://s3-ap-southeast-1.amazonaws.com/bloodfornepal/apple-touch-icon.png" />
+    <%= display_meta_tags title: 'Donate Blood, Save Nepal Earthquake Victims.',
+      description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate Blood, Save Lives!',
+      keywords: 'Donate, Blood, Nepal, Earthquake, Victims, Save Lives',
+      viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0',
+      canonical: 'http://bloodfornepal.org',
+      og: { title: 'Donate Blood, Save Nepal Earthquake Victims.', image: 'https://s3-ap-southeast-1.amazonaws.com/bloodfornepal/supportnepal_optimized.jpg', description: 'Your 1 pint of blood could save 3 victims of Earthquake in Nepal. Donate, Blood Save Lives!' } %>
 
   <%= stylesheet_link_tag 'home' %>
   <%= csrf_meta_tags %>
