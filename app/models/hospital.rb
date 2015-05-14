@@ -5,8 +5,8 @@
 #  id                   :integer          not null, primary key
 #  name                 :string
 #  address              :string
-#  lat                  :string
-#  long                 :string
+#  lat                  :float
+#  long                 :float
 #  phone                :string
 #  category             :string
 #  contact_person_name  :string

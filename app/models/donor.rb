@@ -18,7 +18,7 @@
 class Donor < ActiveRecord::Base
   extend Enumerize
   geocoded_by :address, latitude: :lat, longitude: :long
-  before_validation :normalize_data, :nepal_cellphone, :convert_km_to_mile
+  before_validation :normalize_data, :nepal_cellphone#, :convert_km_to_mile
   after_validation :geo_code, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   validates :full_name, presence: { :message => 'Your name cannot be blank!' }
